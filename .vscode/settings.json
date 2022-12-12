@@ -1,0 +1,30 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": [
+              "comment",
+              "entity.name.type.class", //class names
+              "entity.other.attribute-name",
+              "keyword", //import, export, return…
+              "constant", //String, Number, Boolean…, this, super
+              "storage.modifier", //static keyword
+              "storage.type.class.js", //class keyword
+            ],
+            "settings": {
+              "fontStyle": "italic",
+            }
+          },
+          {
+            "name": "Constants",
+            "scope": "variable.other.constant.object.js",
+            "settings": {
+                "foreground": "#0ce9aa"
+            }
+          },
+          
+        ]
+      }
+    }
+
+

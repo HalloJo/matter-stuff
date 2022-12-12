@@ -1,10 +1,30 @@
-const section = document.querySelector(".shapes");
+const { Engine, Render, Bodies, World } = Matter;
 
-const engine = Matter.Engine.create();
-const renderer = Matter.Render.create({
+const section = document.querySelector(".shapes");
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
+
+const engine = Engine.create();
+const renderer = Render.create({
   element: section,
   engine: engine,
+  options: {
+    height: windowHeight,
+    width: windowWidth,
+    background: "#fff",
+    wireframes: false,
+    pixelRatio: window.devicePixelRatio,
+  },
 });
 
-Matter.Engine.run(engine);
-Matter.Render.run(renderer);
+const createShape = (x, y) => {
+  return Bodies.circle(x, y, 20 + 20 * Math.random());
+};
+
+document.addEventListener("click", (event) => {
+  const shape = createShape(event.pageX, event.pageY);
+  World.add(engine.world, shape);
+});
+
+Engine.run(engine);
+Render.run(renderer);
