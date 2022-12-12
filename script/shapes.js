@@ -25,6 +25,17 @@ const createShape = (x, y) => {
   });
 };
 
+const bigShape = Bodies.circle(windowWidth / 2, windowHeight / 2, 250, {
+  isStatic: true,
+  render: {
+    strokeStyle: "#000",
+    lineWidth: 20,
+    fillStyle: "#fff",
+  },
+});
+
+World.add(engine.world, bigShape);
+
 document.addEventListener("click", (event) => {
   const shape = createShape(event.pageX, event.pageY);
   World.add(engine.world, shape);
