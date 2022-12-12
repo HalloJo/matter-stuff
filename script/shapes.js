@@ -18,7 +18,11 @@ const renderer = Render.create({
 });
 
 const createShape = (x, y) => {
-  return Bodies.circle(x, y, 20 + 20 * Math.random());
+  return Bodies.circle(x, y, 20 + 20 * Math.random(), {
+    render: {
+      fillStyle: "#000",
+    },
+  });
 };
 
 document.addEventListener("click", (event) => {
