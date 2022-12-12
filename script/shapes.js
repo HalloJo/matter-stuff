@@ -34,7 +34,20 @@ const bigShape = Bodies.circle(windowWidth / 2, windowHeight / 2, 250, {
   },
 });
 
-World.add(engine.world, bigShape);
+const ground = Bodies.rectangle(
+  windowWidth / 2,
+  windowHeight + 25,
+  windowWidth,
+  50,
+  {
+    isStatic: true,
+    render: {
+      fillStyle: "red",
+    },
+  }
+);
+
+World.add(engine.world, [bigShape, ground]);
 
 document.addEventListener("click", (event) => {
   const shape = createShape(event.pageX, event.pageY);
