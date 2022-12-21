@@ -1,4 +1,4 @@
-const { Engine, Render, Bodies, World, MouseConstraint } = Matter;
+const { Engine, Render, Bodies, World, MouseConstraint, Composites } = Matter;
 
 const section = document.querySelector(".shapes");
 const windowWidth = window.innerWidth;
@@ -18,7 +18,7 @@ const renderer = Render.create({
 });
 
 const createShape = (x, y) => {
-  return Bodies.rectangle(x, y, 77, 101, {
+  return Bodies.rectangle(x, y, 55, 72, {
     render: {
       sprite: {
         texture: "/assets/jorik.png",
@@ -52,6 +52,10 @@ const mouseControl = MouseConstraint.create(engine, {
       visible: false,
     },
   },
+});
+
+const initialShapes = Composites.stack(55, 72, 15, 5, 40, 40, (x, y) => {
+  return createShape(x, y);
 });
 
 const ground = Bodies.rectangle(
@@ -90,6 +94,7 @@ World.add(engine.world, [
   leftWall,
   rightWall,
   mouseControl,
+  initialShapes,
 ]);
 
 document.addEventListener("click", (event) => {
@@ -99,3 +104,15 @@ document.addEventListener("click", (event) => {
 
 Engine.run(engine);
 Render.run(renderer);
+
+let time = 0;
+const changeGravity = () => {
+  time = time + 0.004;
+
+  engine.world.gravity.x = Math.sin(time);
+  engine.world.gravity.y = Math.cos(time);
+
+  requestAnimationFrame(changeGravity);
+};
+
+changeGravity();

@@ -8,6 +8,7 @@
 body {
   position: relative;
   font-family: "Unbounded", cursive;
+  background-color: #000;
 }
 
 h1 {
@@ -16,4 +17,15 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
+  text-align: center;
+}
+
+.split {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  mix-blend-mode: difference;
 }/*# sourceMappingURL=styles.css.map */
