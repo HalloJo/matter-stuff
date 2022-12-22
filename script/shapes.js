@@ -18,15 +18,29 @@ const renderer = Render.create({
 });
 
 const createShape = (x, y) => {
-  return Bodies.rectangle(x, y, 55, 72, {
-    render: {
-      sprite: {
-        texture: "/assets/jorik.png",
-        // xScale: 0.5,
-        // yScale: 0.5,
+  const randomNumber = Math.random();
+
+  if (randomNumber > 0.5) {
+    return Bodies.rectangle(x, y, 55, 72, {
+      render: {
+        sprite: {
+          texture: "/assets/jorik.png",
+          // xScale: 0.5,
+          // yScale: 0.5,
+        },
       },
-    },
-  });
+    });
+  } else {
+    return Bodies.circle(x, y, 25, {
+      render: {
+        sprite: {
+          texture: "/assets/jorik_ball.png",
+          xScale: 0.5,
+          yScale: 0.5,
+        },
+      },
+    });
+  }
 };
 
 const bigShape = Bodies.circle(windowWidth / 2, windowHeight / 2, 250, {
